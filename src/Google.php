@@ -4,8 +4,12 @@ namespace SearchRank {
     class Google {
         private HttpClient $httpClient;
 
-        public function __construct(HttpClient $httpClient) {
-            $this->httpClient = $httpClient;
+        public function __construct(HttpClient $httpClient = null) {
+            if ($httpClient === null) {
+                $this->httpClient = new HttpClientImpl();
+            } else {
+                $this->httpClient = $httpClient;
+            }
         }
 
         /**

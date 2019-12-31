@@ -14,7 +14,7 @@ class GoogleTest extends TestCase implements HttpClient {
     }
 
     function testGetSerpUrl() {
-        $google = new Google($this);
+        $google = new Google();
         $serp = $google->getSerpUrl('keyword', 1);
         $this->assertSame("https://www.google.com/search?q=keyword&start=0", $serp);
         $serp = $google->getSerpUrl('アイウエオ カキクケコ', 5);
@@ -22,14 +22,14 @@ class GoogleTest extends TestCase implements HttpClient {
     }
 
     function testGetSerpUrlThrowException() {
-        $google = new Google($this);
+        $google = new Google();
         $this->expectException(SearchRank\Exception::class);
         $serp = $google->getSerpUrl('keyword', 0);
     }
 
     function testParseHtml() {
         $html = file_get_contents(__DIR__ . '/GoogleSerp.html');
-        $google = new Google($this);
+        $google = new Google();
         $results = $google->parseHtml($html);
         $this->assertCount(10, $results);
         $this->assertSame('https://service.plan-b.co.jp/blog/seo/8806/', $results[0]);
