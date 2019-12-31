@@ -50,7 +50,7 @@ namespace SearchRank {
                 throw new Exception("page must be positive integer.");
             }
 
-            $escapedKeyword = preg_replace("/( |　)/", "+", $keyword);
+            $escapedKeyword = urlencode(preg_replace("/( |　)/", "+", $keyword));
             $start = ($page - 1) * 10;
             $url = "https://www.google.com/search?q={$escapedKeyword}&start={$start}";
             return $url;
