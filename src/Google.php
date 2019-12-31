@@ -2,7 +2,7 @@
 
 namespace SearchRank {
     class Google {
-        private HttpClient $httpClient;
+        private $httpClient;
 
         public function __construct(HttpClient $httpClient = null) {
             if ($httpClient === null) {
