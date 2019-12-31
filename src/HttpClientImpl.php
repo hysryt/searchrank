@@ -5,14 +5,25 @@ namespace SearchRank {
     use GuzzleHttp;
 
     class HttpClientImpl implements HttpClient {
+        private String $userAgent;
+
         public function download(String $url): ?String {
             $client = new GuzzleHttp\Client();
+
+            $headers = [];
+            if ($userAgent) {
+                $headers["User-Agent"] = $this->userAgent;
+            }
+
             $res = $client->request('GET', $url, array(
-                "headers" => array(
-                    "User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.151 Safari/535.19",
-                ),
+                "headers" => $headers,
             ));
+            
             return $res->getBody();
+        }
+
+        public function setUserAgent(String $ua) {
+            $this->userAgent = $ua;
         }
     }
 }

@@ -18,7 +18,7 @@ class GoogleTest extends TestCase implements HttpClient {
         $serp = $google->getSerpUrl('keyword', 1);
         $this->assertSame("https://www.google.com/search?q=keyword&start=0", $serp);
         $serp = $google->getSerpUrl('アイウエオ カキクケコ', 5);
-        $this->assertSame("https://www.google.com/search?q=アイウエオ+カキクケコ&start=40", $serp);
+        $this->assertSame("https://www.google.com/search?q=%E3%82%A2%E3%82%A4%E3%82%A6%E3%82%A8%E3%82%AA%2B%E3%82%AB%E3%82%AD%E3%82%AF%E3%82%B1%E3%82%B3&start=40", $serp);
     }
 
     function testGetSerpUrlThrowException() {
@@ -38,5 +38,9 @@ class GoogleTest extends TestCase implements HttpClient {
     function download(String $url): ?String {
         $html = file_get_contents(__DIR__ . '/GoogleSerp.html');
         return $html;
+    }
+
+    function setUserAgent(String $ua) {
+
     }
 }
