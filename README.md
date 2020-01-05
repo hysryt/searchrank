@@ -1,5 +1,7 @@
 # searchrank
 
+[![Build Status](https://travis-ci.com/hysryt/searchrank.svg?branch=master)](https://travis-ci.com/hysryt/searchrank)
+
 PHP : ^7.3
 
 ## テスト
